@@ -1,17 +1,26 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
+import Particles from "./components/Particles";
 
 
-
+const getRandomPrice = (min: number, max: number) => {
+  const step = 1000;
+  const v = Math.floor((Math.random() * (max - min + 1) + min) / step) * step;
+  return v;
+};
 
 const menuItems = [
   {
     category: "Signature Drinks",
     items: [
-      { name: "Jakarta Sunrise", price: 48000, desc: "Espresso, palm sugar, coconut milk, pandan foam", tag: "bestseller", emoji: "☀️" },
-      { name: "Flame Cold Brew", price: 52000, desc: "24hr cold brew, salted caramel, smoked vanilla", tag: "new", emoji: "🔥" },
-      { name: "Pandan Latte", price: 45000, desc: "Double shot, fresh pandan syrup, oat milk", tag: null, emoji: "🌿" },
-      { name: "Foam Cascade", price: 55000, desc: "Nitro cold brew with cascading coconut foam", tag: "fan fave", emoji: "🌊" },
+      { name: "Latte", price: getRandomPrice(25000, 45000), desc: "Velvety steamed milk over a double espresso, silky microfoam on top.", tag: null, emoji: "☕" },
+      { name: "Caramel Macchiato", price: getRandomPrice(30000, 52000), desc: "Layers of steamed milk, espresso and house caramel drizzle.", tag: "bestseller", emoji: "🍮" },
+      { name: "Espresso", price: getRandomPrice(15000, 28000), desc: "Single or double shot — rich, concentrated and bold.", tag: null, emoji: "⚡" },
+      { name: "Cappuccino", price: getRandomPrice(28000, 46000), desc: "Equal parts espresso, steamed milk and airy foam — timeless.", tag: null, emoji: "☁️" },
+      { name: "Americano", price: getRandomPrice(20000, 38000), desc: "Hot water pulled over espresso for a clean, long cup.", tag: null, emoji: "🌊" },
+      { name: "Affogato", price: getRandomPrice(42000, 65000), desc: "House vanilla gelato with a hot espresso shot poured over.", tag: "dessert", emoji: "🍨" },
+      { name: "Flat White", price: getRandomPrice(27000, 48000), desc: "Ristretto shots with thin, silky milk — smooth texture.", tag: null, emoji: "🎯" },
+      { name: "Long Black", price: getRandomPrice(22000, 40000), desc: "Hot water then espresso — preserves crema and clarity.", tag: null, emoji: "🌑" },
     ],
   },
   {
@@ -74,7 +83,9 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-[#faf7f2] font-sans text-[#1a1a1a]">
+    <>
+      <Particles />
+      <div className="min-h-screen font-sans text-[#1a1a1a] relative z-10">
 
 
 
@@ -241,10 +252,57 @@ export default function Home() {
 
 
       {/* Footer */}
-      <footer className="bg-[#1a1a1a] text-[#666] py-10 px-6 text-center text-sm">
-        <div className="flex items-center justify-center gap-2 mb-3"><span className="text-2xl">🔥</span><span className="text-white font-bold text-lg">Flame & Foam</span></div>
-        <p>© 2025 Flame & Foam · Kemang, Jakarta · All rights reserved</p>
-        <p className="mt-1">📞 +62 21 7654 3210 · ✉️ hello@flameandfoam.id · 📸 @flameandfoam.jkt</p>
+      <footer className="bg-[#c2703e] text-white py-12">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-3 gap-8 items-center">
+          <div className="hidden sm:block">
+            <div className="w-full h-48 rounded-l-[80px] bg-cover bg-center overflow-hidden" style={{ backgroundImage: "linear-gradient(rgba(194,124,61,0.65), rgba(194,124,61,0.65)), url('/footer-photo.jpg')" }} aria-hidden="true" />
+          </div>
+
+          <div className="text-center sm:text-left">
+            <div className="flex items-center justify-center sm:justify-start gap-3 mb-4">
+              <span className="text-2xl">🔥</span>
+              <span className="text-white font-bold text-lg">Flame & Foam</span>
+            </div>
+            <nav aria-label="Footer navigation" className="flex flex-col gap-3">
+              <a href="#about" className="font-medium hover:underline">About Us</a>
+              <a href="#menu" className="font-medium hover:underline">Our Products</a>
+              <a href="#contact" className="font-medium hover:underline">Contact Us</a>
+            </nav>
+          </div>
+
+          <div className="text-center sm:text-right space-y-4">
+            <p className="text-xl font-bold">Get In Touch With Us!</p>
+            <div className="flex justify-center sm:justify-end gap-4">
+              <a href="#" aria-label="Facebook" className="p-2 rounded-lg bg-white/10 hover:bg-white/20">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 12C22 6.48 17.52 2 12 2S2 6.48 2 12c0 4.84 3.44 8.84 7.94 9.8v-6.93H7.9v-2.87h2.04V9.41c0-2.02 1.2-3.13 3.03-3.13.88 0 1.8.16 1.8.16v1.98h-1.02c-1.01 0-1.32.62-1.32 1.25v1.5h2.25l-.36 2.87h-1.89V21.8C18.56 20.84 22 16.84 22 12z" fill="white"/></svg>
+              </a>
+              <a href="#" aria-label="Instagram" className="p-2 rounded-lg bg-white/10 hover:bg-white/20">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 6.5A4.5 4.5 0 1 0 16.5 13 4.5 4.5 0 0 0 12 8.5zm5.5-3a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" fill="white"/></svg>
+              </a>
+              <a href="#" aria-label="YouTube" className="p-2 rounded-lg bg-white/10 hover:bg-white/20">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 15l5.2-3L10 9v6zm11-3c0-1.1-.9-2-2-2h-1.2l-.28-.02C16.6 9.8 13.6 9 12 9s-4.6.8-5.52.98L6.2 10H5c-1.1 0-2 .9-2 2v1c0 1.1.9 2 2 2h1.2l.28.02C7.4 15.2 10.4 16 12 16s4.6-.8 5.52-.98L17.8 15H19c1.1 0 2-.9 2-2v-1z" fill="white"/></svg>
+              </a>
+            </div>
+
+            <div className="mt-2">
+              <div className="flex items-center gap-2 mt-2 justify-center sm:justify-end">
+                <span className="inline-block w-6 h-4 bg-white rounded-sm shadow-inner" aria-hidden="true" />
+                <span className="text-sm">Indonesia</span>
+              </div>
+
+              <p className="mt-3 uppercase text-sm font-medium">Language</p>
+              <div className="flex items-center gap-3 justify-center sm:justify-end mt-2">
+                <button className="font-bold">EN</button>
+                <span className="text-white/60">|</span>
+                <button className="text-white/80">IN</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="border-t border-white/10 mt-8 pt-6 text-center text-sm text-white/80">
+          © {new Date().getFullYear()} Flame & Foam · Kemang, Jakarta · All rights reserved · 📞 +62 21 7654 3210 · ✉️ hello@flameandfoam.id
+        </div>
       </footer>
 
 
@@ -281,12 +339,10 @@ export default function Home() {
         </div>
       )}
 
-
-
-
       <style>{`
         @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-33.33%); } }
       `}</style>
-    </div>
+      </div>
+    </>
   );
 }
