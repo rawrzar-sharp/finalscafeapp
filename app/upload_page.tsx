@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { CartService } from "@/services/cartService";
-import { UserService } from "@/services/userService";
+import { CartService } from "./services/cartService";
+import { UserService } from "./services/userService";
 
 export default function UploadScreen() {
   const router = useRouter();

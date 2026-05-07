@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
-import { UserService } from "@/services/userService";
-import { BottomNav } from "@/components/BottomNav";
+import { UserService } from "./services/userService";
+import BottomNav from "./components/BottomNav";
 
 export default function ProfileScreen() {
   const [points, setPoints] = useState(0);

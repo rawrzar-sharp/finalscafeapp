@@ -1,7 +1,8 @@
+"use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { BottomNav } from "app/components/BottomNav";
-import { CartService } from "app/services/cartService";
+import BottomNav from "./components/BottomNav";
+import { CartService } from "./services/cartService";
 
 const COFFEE_LIST = [
   { name: "Espresso", price: 15000, image: "https://images.unsplash.com/photo-1511920170033-f8396924c348", category: "Hot", isPopular: true },

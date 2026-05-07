@@ -1,7 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { CartService } from "@/services/cartService";
-import { UserService } from "@/services/userService";
+import { CartService } from "./services/cartService";
+import { UserService } from "./services/userService";
 
 export default function PaymentScreen() {
   const router = useRouter();
@@ -9,7 +9,7 @@ export default function PaymentScreen() {
 
   const handleConfirmPayment = (method: string) => {
     if (method === "QRIS") {
-      router.push("/checkout");
+      router.push("/checkout_page"); // Ubah path menyesuaikan nama file kamu
     } else {
       // Metode manual / Cash
       UserService.earnPoints(total);
